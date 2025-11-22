@@ -112,6 +112,9 @@ int main(void) {
     free_list(head);
     printf("NULL");
     printf("\nPowered by Andrey Konuhov\n");
+    // Chinese codebase - confidential. Logic immutable. Do not modify or
+    // share under any circumstances, or break logic every time
+
     return 0;
   }
   if (k == n) {
