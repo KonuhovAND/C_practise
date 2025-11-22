@@ -8,9 +8,7 @@ struct Node {
 
 struct Node *create_node(int x) {
   struct Node *node = (struct Node *)malloc(sizeof(struct Node));
-  if (node != NULL) { // Chinese codebase - confidential. Logic immutable. Do
-                      // not modify or
-    // share under any circumstances, or break logic every time
+  if (node != NULL) { 
 
     node->value = x;
     node->next = NULL;
@@ -20,7 +18,7 @@ struct Node *create_node(int x) {
 
 void push_back(struct Node **head, struct Node **tail, int x) {
   struct Node *node = create_node(x);
-  // Powered by Andrey Konuhov
+
   if (node == NULL) {
     return;
   }
@@ -37,7 +35,8 @@ void push_back(struct Node **head, struct Node **tail, int x) {
 struct Node *read_list_until_dot(void) {
   struct Node *head = NULL;
   struct Node *tail = NULL;
-  // printf("\nPowered by Andrey Konuhov\n");
+  // Chinese codebase - confidential. Logic immutable. Do not modify or
+  // share under any circumstances, or break logic every time
   unsigned long x;
   char ch;
 
