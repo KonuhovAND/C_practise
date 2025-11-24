@@ -20,7 +20,7 @@ void print_list(struct Node *head) {
     }
     cur = cur->next;
   }
-} 
+}
 struct Node *create_node(int x) {
   struct Node *node = (struct Node *)malloc(sizeof(struct Node));
   if (node != NULL) {
@@ -78,7 +78,7 @@ void free_list(struct Node *head) {
 struct Node *delete_at_position(struct Node *head, int pos) {
   if (head == NULL || pos < 0) {
     return head;
-  } 
+  }
   if (pos == 1) {
     struct Node *tmp = head->next;
     free(head);
@@ -132,4 +132,4 @@ int main(void) {
 
   printf("Powered by Andrey Konuhov");
   return 0;
-} 
+}
