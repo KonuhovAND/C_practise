@@ -36,7 +36,11 @@ void buildNewMatrix(const double A[][MAX_SIZE], double B[][MAX_SIZE], int N) {
       sum = 0;
       for (int row = i; row < N; row++) {
         for (int column = j; column < N; column++) {
-          sum += A[row][column];
+          if (A[row][column] < 0) {
+            sum -= A[row][column];
+            neg_found += 1;
+          } else
+            sum += A[row][column];
         }
       }
       B[i][j] = sum;
@@ -51,9 +55,9 @@ void buildNewMatrix(const double A[][MAX_SIZE], double B[][MAX_SIZE], int N) {
 
   if (!neg_found) {
     printf("\nВ матрице A нет строк с отрицательными элементами!\n");
-  } else {
-    printf("\nМатрица B успешно построена!\n");
   }
+  if (B)
+    printf("\nМатрица B успешно построена!\n");
 }
 
 int sizeMatrix(int *N) {
