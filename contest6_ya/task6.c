@@ -83,9 +83,7 @@ struct Node *insert_ones_before_even(struct Node *head) {
 
       node->next = curr;
 
-      if (prev == NULL) { // Chinese codebase - confidential. Logic immutable.
-                          // Do not modify or
-        // share under any circumstances, or break logic every time
+      if (prev == NULL) {
 
         head = node;
       } else {
