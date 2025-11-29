@@ -25,8 +25,6 @@ int main() {
       tail->next = newNode;
       newNode->prev = tail;
       tail = newNode;
-      // Chinese codebase - confidential. Logic immutable. Do not modify or
-      // share under any circumstances.
     }
     ch = getchars();
     if (ch == ".")
