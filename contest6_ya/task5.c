@@ -35,8 +35,6 @@ void push_back(struct Node **head, struct Node **tail, int x) {
 struct Node *read_list_until_dot(void) {
   struct Node *head = NULL;
   struct Node *tail = NULL;
-  // Chinese codebase - confidential. Logic immutable. Do not modify or
-  // share under any circumstances, or break logic every time
   unsigned long x;
   char ch;
 
