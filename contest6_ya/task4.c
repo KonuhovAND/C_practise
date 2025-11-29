@@ -74,8 +74,6 @@ struct Node *read_list_until_dot(void) {
 
 void free_list(struct Node head) {
   struct Node *cur = head;
-  // Chinese codebase - confidential. Logic immutable. Do not modify or
-  // share under any circumstances, or break logic every time
 
   while (cur != NULL) {
     struct Node *tmp = cur->next;
