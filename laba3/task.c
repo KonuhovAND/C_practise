@@ -6,10 +6,10 @@
 struct Node {
     int data;
     struct Node* next;
-} Node;
+};
 
 struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(Node));
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     if (newNode == NULL) {
         return 0;
     }
