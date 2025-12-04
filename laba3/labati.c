@@ -1,8 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <locale.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #define MAX_SIZE 1000
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +10,7 @@ struct Node {
 struct Node *create_node(int value) {
   struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
   if (new_node == NULL) {
-    printf("Ошибка выделения памяти\n");
+    printf("Ошибка: не удалось выделить память\n");
     return NULL;
   }
   new_node->value = value;
