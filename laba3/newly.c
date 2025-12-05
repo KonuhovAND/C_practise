@@ -34,7 +34,6 @@ void append(struct Node** head, int data) {
     newNode->prev = temp;
 }
 
-// ✅ НОВАЯ ФУНКЦИЯ ДЛЯ ВВОДА СПИСКА
 struct Node* inputList(const char* listName) {
     struct Node* head = NULL;
     int num;
@@ -64,15 +63,6 @@ void printList(struct Node* head) {
 ");
 }
 
-int getLength(struct Node* head) {
-    int count = 0;
-    struct Node* temp = head;
-    while (temp != NULL) {
-        count++;
-        temp = temp->next;
-    }
-    return count;
-}
 
 void freeList(struct Node* head) {
     struct Node* temp;
