@@ -118,8 +118,6 @@ void mergeLists(struct Node **temp1, struct Node **temp2, struct Node **Result,
   }
 }
 
-/* Обёртка: слияние +, при необходимости, добавление лишних узлов из более
- * длинного списка */
 void task(struct Node **temp1, struct Node **temp2, struct Node **Result,
           struct Node **resultTail) {
   int length_1 = getLength(*temp1);
@@ -127,7 +125,6 @@ void task(struct Node **temp1, struct Node **temp2, struct Node **Result,
 
   mergeLists(temp1, temp2, Result, resultTail);
 
-  // если первый длиннее — докидываем один оставшийся узел в конец результата
   if (length_1 > length_2 && *temp1 != NULL) {
     struct Node *node1 = *temp1;
     *temp1 = node1->next;
@@ -144,7 +141,6 @@ void task(struct Node **temp1, struct Node **temp2, struct Node **Result,
       *resultTail = node1;
     }
   }
-  // если второй длиннее — просто оставляем temp2 как "остаток"
 }
 
 int main() {
