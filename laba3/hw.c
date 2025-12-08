@@ -84,11 +84,9 @@ void freeList(struct Node *head) {
   }
 }
 
-/* Сливаем попеременно узлы из temp1 и temp2 в Result */
 void mergeLists(struct Node **temp1, struct Node **temp2, struct Node **Result,
                 struct Node **resultTail) {
   while (*temp1 != NULL && *temp2 != NULL) {
-    // берём узел из первого списка
     struct Node *node1 = *temp1;
     *temp1 = node1->next;
     if (*temp1 != NULL)
@@ -104,7 +102,6 @@ void mergeLists(struct Node **temp1, struct Node **temp2, struct Node **Result,
       *resultTail = node1;
     }
 
-    // берём узел из второго списка
     struct Node *node2 = *temp2;
     *temp2 = node2->next;
     if (*temp2 != NULL)
