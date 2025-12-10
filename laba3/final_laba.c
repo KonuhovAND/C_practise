@@ -1,4 +1,3 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <locale.h>
 #include <stdio.h>
@@ -46,8 +45,8 @@ struct Node *inputList(const char *listName) {
   printf("%s (1 2 3. для конца): \n", listName);
   while (scanf("%d%c", &num, &ch) == 2) {
     append(&head, num);
-    if (ch == '.')
-      break;
+    if (ch == '.') break;
+    if (ch == '\n' || ch == EOF) break;
   }
 
   return head;
@@ -122,7 +121,7 @@ void task(struct Node **temp1, struct Node **temp2, struct Node **Result,
 
   mergeLists(temp1, temp2, Result, resultTail);
 
-  if (length_1 > length_2 && *temp1 != NULL) {
+  if (length_1 > length_2&& *temp1 != NULL) {
     struct Node *node1 = *temp1;
     *temp1 = node1->next;
     if (*temp1 != NULL)
