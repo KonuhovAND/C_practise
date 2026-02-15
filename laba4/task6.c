@@ -12,97 +12,118 @@ void inputString(char *str) {
     str[i] = '\0';
 }
 
-void reverseRange(char *str, int start, int end) {
-    while (start < end) {
-        char temp = str[start];
-        str[start] = str[end];
-        str[end] = temp;
-        start++;
-        end--;
+void inputWord(char *word) {
+    char ch;
+    int i = 0;
+    
+    while (scanf("%c", &ch) == 1 && (ch == ' ' || ch == '\n')) {
     }
+    
+    if (ch != ' ' && ch != '\n') {
+        word[i++] = ch;
+    }
+    
+    while (scanf("%c", &ch) == 1 && ch != '\n' && ch != ' ') {
+        if (i < MaxLen - 1) {
+            word[i++] = ch;
+        }
+    }
+    word[i] = '\0';
 }
 
-int stringLength(char *str) {
-    int len = 0;
-    while (str[len] != '\0') {
-        len++;
-    }
-    return len;
-}
-
-char toUpperCase(char ch) {
-    if (ch >= 'a' && ch <= 'z') {
-        return ch - 'a' + 'A';
-    }
-    return ch;
-}
-
-char toLowerCase(char ch) {
+char toLower(char ch) {
     if (ch >= 'A' && ch <= 'Z') {
         return ch - 'A' + 'a';
     }
     return ch;
 }
 
-void reverseWords(char *str) {
-    int len = stringLength(str);
-    
-    reverseRange(str, 0, len - 1);
-    
-    int i = 0;
-    int wordCount = 0;
-    
-    while (i < len) {
-        while (i < len && str[i] == ' ') {
-            i++;
-        }
-        if (i >= len) break;
-        
-        wordCount++;  
-        
-        int wordStart = i;
-        while (i < len && str[i] != ' ') {
-            i++;
-        }
-        int wordEnd = i - 1;
-        reverseRange(str, wordStart, wordEnd);
+char toUpper(char ch) {
+    if (ch >= 'a' && ch <= 'z') {
+        return ch - 'a' + 'A';
     }
-    
-    if (len > 0 && str[0] != ' ') {
-        str[0] = toUpperCase(str[0]);
-    }
-    
-    if (wordCount > 1) {
-        i = 0;
-        int lastWordStart = 0;
-        while (i < len) {
-            if (str[i] != ' ') {
-                lastWordStart = i;
-                while (i < len && str[i] != ' ') {
-                    i++;
-                }
-            } else {
-                i++;
-            }
-        }
-        str[lastWordStart] = toLowerCase(str[lastWordStart]);
-    }
+    return ch;
 }
 
-
-void printString(char *str) {
-    int i = 0;
-    while (str[i] != '\0') {
-        printf("%c", str[i]);
-        i++;
+int compareWords(char *str, int start, int end, char *word) {
+    int wordLen = 0;
+    while (word[wordLen] != '\0') {
+        wordLen++;
     }
-    printf(".\n");
+    
+    int strLen = end - start + 1;
+    
+    if (strLen != wordLen) {
+        return 0;
+    }
+    
+    for (int i = 0; i < wordLen; i++) {
+        if (toLower(str[start + i]) != toLower(word[i])) {
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+void removeWords(char *str, char *word) {
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+    
+    int readIndex = 0;
+    int writeIndex = 0;
+    int isFirstWord = 1;
+    
+    while (readIndex < len) {
+        while (readIndex < len && str[readIndex] == ' ') {
+            readIndex++;
+        }
+        
+        if (readIndex >= len) break;
+        
+        int wordStart = readIndex;
+        
+        while (readIndex < len && str[readIndex] != ' ') {
+            readIndex++;
+        }
+        
+        int wordEnd = readIndex - 1;
+        
+        if (!compareWords(str, wordStart, wordEnd, word)) {
+            if (!isFirstWord) {
+                str[writeIndex++] = ' ';
+            }
+            
+            for (int j = wordStart; j <= wordEnd; j++) {
+                if (isFirstWord && j == wordStart) {
+                    str[writeIndex++] = toUpper(str[j]);
+                } else {
+                    str[writeIndex++] = str[j];
+                }
+            }
+            
+            isFirstWord = 0;
+        }
+    }
+    
+    str[writeIndex] = '\0';
 }
 
 int main() {
     char str[MaxLen];
+    char word[MaxLen];
+    
     inputString(str);
-    reverseWords(str);
-    printString(str);
+    inputWord(word);
+    removeWords(str, word);
+    
+    if (str[0] == '\0') {
+        printf("Empty\n");
+    } else {
+        printf("%s.\n", str);
+    }
+    
     return 0;
 }
