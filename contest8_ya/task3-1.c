@@ -46,20 +46,30 @@ int main(){
     int counter = 1;
     struct node *node = NULL,*tail = NULL;
     char ch;
-    int value,i =0;
+    int value,i =0,flag = 0;
     while (1){
         int res = scanf("%d",&value);
-        if (res != 1){
-            if (scanf("%c",&ch) != 1 || ch == '.' ){break;}
-            break;
-        }
-        if (value == 0) continue;
+        if (res == 1){
+        
+        if (value == 0 ) continue;
         else if (value > 0)
-        {
+        {   flag = 0;
             for (i=0;i < value;i++){push_t(&node,&tail,&counter);}
         }
-        else if (value <0){for (i=0;i < -value;i++){if (node == NULL){break;};pop_smoke(&node,&tail);}}
+        else if (value <0){
+            for (i=0;i < -value;i++){
+                if (node == NULL){flag= 1;break;};
+                pop_smoke(&node,&tail);
+                flag = 0;    
+            }
+            }
         print_q(node);
+        }else {
+            if (getchar() == '.'){
+                if (node == NULL && counter == 1 && !flag) printf("0\n");
+                break;
+            }
+        }
     }
     while (node != NULL){pop_smoke(&node,&tail);}
     return 0;
