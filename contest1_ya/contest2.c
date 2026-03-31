@@ -3,7 +3,7 @@
 #include <stdio.h>
 int main() {
   int a;
-
+  printf("%d",a);
   // Powered By Andrey Konuhov
   setlocale(0, "");
   scanf("%d", &a);
