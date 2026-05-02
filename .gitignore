@@ -6,7 +6,7 @@
 *.ko
 *.obj
 *.elf
-
+*.png
 # Linker output
 *.ilk
 *.map
@@ -50,6 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
+.venv
 # debug information files
 *.dwo
