@@ -41,10 +41,8 @@ def linear_transform(
 
 
 if __name__ == "__main__":
-    photo = "cat.jpg"
+    photo = "brick_wall.png"
 
-    # Начало координат (выбрано на фото)
-    photo = "cat.jpg"
     
     # Ставим точку в центр фото (для 474x356 это ~237, 178)
     pivot = (237, 178)
