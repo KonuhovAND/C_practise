@@ -4,6 +4,11 @@
 #include <locale.h>
 #include <ctype.h>
 
+
+int isalpha_1(char ch){
+  return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+}
+
 int main(int argc, char* argv[])
 {
     FILE* in;
@@ -38,7 +43,7 @@ int main(int argc, char* argv[])
 
     while (fscanf(in, "%c", &ch) == 1)
     {
-        if (isalpha((unsigned char)ch))
+        if (isalpha_1(ch))
         {
             if (inWord == 0)
             {
@@ -51,12 +56,10 @@ int main(int argc, char* argv[])
             inWord = 0;
             if (ch == '.' || ch == '?' || ch == '!')
             {
-                // конец предложения
                 posEnd = ftell(in);
 
                 if (words == n)
                 {
-                    // вывод предложения с posStart до posEnd
                     long cur = posEnd;
                     fseek(in, posStart, SEEK_SET);
                     long i;
